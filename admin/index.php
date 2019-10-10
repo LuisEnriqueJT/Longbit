@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require '../php/Funciones.php';
 
 	$obj = new Funciones();
@@ -6,11 +7,14 @@
 	if(isset($_POST['user'],$_POST['pass'])){
 		//checar si el usuario existe
 		$checar = $obj->LogIn($_POST['user'],$_POST['pass']);
-		echo print_r($checar);
-		//if($checar){
-			//$_SESSION['admin']=true;
-			//header('publicacion.php');
-		//}
+		
+		//echo print_r($checar);
+		
+		//INICIA SESION
+		if($checar){
+			$_SESSION['admin']=$checar['admin_id'];
+			header('Location: publicacion.php');
+		}
 	}
 ?>
 

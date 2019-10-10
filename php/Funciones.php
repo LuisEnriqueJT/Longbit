@@ -49,5 +49,39 @@
 
 			return $query->fetch();
 		}
+
+		public function subirPublicacion($titulo,$contenido,$admin){
+			global $pdo;
+
+			$admin_id = $pdo->prepare("
+				SELECT admin_id
+				FROM admins
+				WHERE admin_id = :user
+			");
+
+			$admin_id->execute([
+				'user'=>$admin
+			]);
+
+			$admin_id = $admin_id->fetch();
+
+			$query = $pdo->prepare("
+				INSERT INTO blog(titulo,contenido,admin_id,fecha)
+				VALUES (:titulo,:contenido,:admin_id,:fecha)
+			");
+
+			$query->execute([
+				'titulo'=>$titulo,
+				'contenido'=>$contenido,
+				'admin_id'=>$admin_id['admin_id'],
+				'fecha'=>time()	
+			]);
+
+			if($query){
+				return true;
+			}else{
+				return false;
+			}
+		}
 	}
 ?>

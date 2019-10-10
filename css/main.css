@@ -1,0 +1,10 @@
+body{
+	background-color: #b3dcff;
+}
+
+.encabezado{
+	font-family: 'Turret Road', cursive;
+	color: white;
+	height: 100px;
+	background-color: #2E201A;
+}

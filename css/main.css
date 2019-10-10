@@ -5,6 +5,10 @@ body{
 .encabezado{
 	font-family: 'Turret Road', cursive;
 	color: white;
-	height: 100px;
+	height: 150px;
 	background-color: #2E201A;
+}
+
+.formInput{
+	width: 30em;
 }

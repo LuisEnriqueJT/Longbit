@@ -32,5 +32,22 @@
 
 			return $query->fetch();
 		}
+
+		public function logIn($user, $pass){
+			global $pdo;
+
+			$query=$pdo->prepare("
+				SELECT *
+				FROM admins
+				WHERE usuario = :user AND pass = :pass
+			");
+
+			$query->execute([
+				'user'=>$user,
+				'pass'=>$pass
+			]);
+
+			return $query->fetch();
+		}
 	}
 ?>

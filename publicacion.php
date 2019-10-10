@@ -5,7 +5,7 @@
 	/*Obtener registros, la variable $publicaciones recibe 
 	las publicaciones almacenadas en el return de la funcion 
 	getPublicaciones() en php/Funciones.php*/
-	$publicaciones = $obj->getPublicaciones();
+	$publicacion = $obj->getPublicacion($_GET['blog_id']);
 	//echo '<pre>',print_r($publicaciones),'</pre>';
 	//exit();
 
@@ -14,7 +14,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Index</title>
+	<title><?php echo $publicacion['titulo'];?></title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Turret+Road&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
@@ -34,15 +34,12 @@
 	<!--::::::::::::::::::::::FIN ENCABEZADO:::::::::::::::::::::::-->
 
 	<div class="container cuerpo">
-		<h2 class="p-3">Mi blog</h2>
+		<h2 class="p-3"><?php echo $publicacion['titulo'];?></h2>
 			<div class="row">
-				<?php foreach($publicaciones as $publicacion):?>	
-					<div class="col-lg-4 col-md-4">
-						<h5><?php echo $publicacion['titulo']?></h5>	
-						<p><?php echo $publicacion['contenido']?></p>
-						<a href="publicacion.php?blog_id=<?php echo $publicacion['blog_id']; ?>">Ver mas</a>			
-					</div>
-				<?php endforeach; ?>	
+				<div class="col-lg-12">
+					<?php echo $publicacion['contenido'];?>
+					<p>Publicado por: <strong><?php echo $publicacion['usuario']; ?><strong></p>
+				</div>
 			</div>
 	</div>
 

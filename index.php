@@ -1,5 +1,14 @@
 <?php
-	require 'php/Funciones.php'
+	require 'php/Funciones.php';
+
+	$obj = new Funciones();
+	/*Obtener registros, la variable $publicaciones recibe 
+	las publicaciones almacenadas en el return de la funcion 
+	getPublicaciones() en php/Funciones.php*/
+	$publicaciones = $obj->getPublicaciones();
+	echo '<pre>',print_r($publicaciones),'</pre>';
+	exit();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
